@@ -43,6 +43,9 @@ def execute():
             left_letters = (secret_word.__len__() - hits -
                             secret_word.count(' ') - secret_word.count('-'))
 
+            if left_letters == 0:
+                hits = secret_word.__len__()
+
             title()
 
             print(
@@ -80,7 +83,8 @@ def execute():
                 chances = chances - 1
 
             if not bool(secret_word.count(bet)):
-                chances = chances - 1
+                if hits == secret_word.__len__():
+                    chances = chances - 1
 
         if hits == secret_word.__len__():
             clear()
